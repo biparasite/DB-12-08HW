@@ -196,19 +196,19 @@ t, tar — формирует копию в формате tar.
 1. Сделать full backup
 
 ```SQL
-mysqldump -uroot -p --all-databases --single-transaction --flush-logs --master-data=2 > full_backup.sql
+mysqldump -uUSER -p --all-databases --single-transaction --flush-logs --master-data=2 > full_backup.sql
 ```
 
 2. Сбросить журнал
 
 ```SQL
-mysqladmin -uUSER -pPASSWORD flush-logs
+mysqladmin -uUSER -p flush-logs
 ```
 
 3. Для восстановления необходимо восстановить полный бекап, а затем
 
 ```SQL
-mysqlbinlog /var/log/mysql/mysql-bin.НОМЕР_ЛОГА| mysql -uUSER -p PASSWORD
+mysqlbinlog /var/log/mysql/mysql-bin.НОМЕР_ЛОГА| mysql -uUSER -p
 ```
 
 Или так сделать инкрементное копирование. Перед - необходимо выполнить full backup
